@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="vi" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thiệp Mời Đám Cưới — Gia Huy & Cẩm Tiên</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Cormorant Garamond, Great Vibes, Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        parchment: '#f7f3e8',
+                        vintageBrown: '#3a2618',
+                        accentGold: '#c5a059',
+                        deepRed: '#7a2021',
+                        deepRedHover: '#601819'
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        script: ['"Great Vibes"', 'cursive'],
+                        sans: ['Montserrat', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #23160e;
+            color: #3a2618;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .cursive-name {
+            font-family: 'Great Vibes', cursive;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(0.8); }
+            50% { opacity: 0.9; transform: scale(1.2); }
+        }
+        .star {
+            position: absolute;
+            background: #f7f3e8;
+            border-radius: 50%;
+            animation: twinkle 4s infinite ease-in-out;
+        }
+        @keyframes spinSlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .animate-spin-slow {
+            animation: spinSlow 6s linear infinite;
+        }
+    </style>
+</head>
+<body class="min-h-full flex flex-col items-center justify-start relative overflow-x-hidden py-10 px-4 sm:px-6">
+
+    <!-- Hiệu ứng hạt sao lấp lánh nền -->
+    <div id="stars-container" class="absolute inset-0 pointer-events-none overflow-hidden z-0"></div>
+
+    <!-- Audio phát nhạc nền -->
+    <audio id="bg-music" loop>
+        <source src="https://actions.google.com/sounds/v1/ambiences/gentle_wind_chimes.ogg" type="audio/ogg">
+        Trình duyệt không hỗ trợ phát nhạc.
+    </audio>
+
+    <!-- Nút Bật / Tắt Nhạc -->
+    <div class="fixed top-6 right-6 z-50">
+        <button id="music-toggle" onclick="toggleMusic()" class="flex items-center gap-2 bg-[#3a2618] text-[#f7f3e8] border border-[#c5a059] px-4 py-2.5 rounded-full shadow-2xl hover:bg-[#523825] transition-all transform hover:scale-105">
+            <div id="music-icon-wrapper" class="w-6 h-6 flex items-center justify-center text-[#c5a059]">
+                <i class="fa-solid fa-compact-disc text-xl" id="disc-icon"></i>
+            </div>
+            <span class="text-xs tracking-wider uppercase font-sans font-medium" id="music-status">Bật nhạc</span>
+        </button>
+    </div>
+
+    <!-- Khung thiệp chính (Parchment Card) -->
+    <main class="relative z-10 w-full max-w-2xl bg-[#f7f3e8] rounded-xl shadow-2xl border-4 border-[#c5a059]/40 p-6 sm:p-12 my-6 text-center">
+        
+        <!-- Họa tiết trang trí góc thiệp -->
+        <div class="absolute top-4 left-4 text-[#c5a059] text-xl opacity-80"><i class="fa-solid fa-heart"></i></div>
+        <div class="absolute top-4 right-4 text-[#c5a059] text-xl opacity-80"><i class="fa-solid fa-heart"></i></div>
+        <div class="absolute bottom-4 left-4 text-[#c5a059] text-xl opacity-80"><i class="fa-solid fa-heart"></i></div>
+        <div class="absolute bottom-4 right-4 text-[#c5a059] text-xl opacity-80"><i class="fa-solid fa-heart"></i></div>
+
+        <!-- Tiêu đề Thiệp Cưới -->
+        <header class="mb-8 pt-4">
+            <h1 class="text-3xl sm:text-5xl font-bold tracking-widest text-[#7a2021] uppercase mb-2">LỄ THÀNH HÔN</h1>
+            <p class="text-xs sm:text-sm font-sans tracking-widest text-[#7a5833] uppercase">Trân trọng báo tin vui</p>
+            <div class="flex items-center justify-center gap-3 my-4 text-[#c5a059]">
+                <span class="h-[1px] w-16 bg-[#c5a059]"></span>
+                <i class="fa-solid fa-heart text-xs text-[#7a2021]"></i>
+                <span class="h-[1px] w-16 bg-[#c5a059]"></span>
+            </div>
+        </header>
+
+        <!-- Lời mời -->
+        <section class="mb-8 px-2 sm:px-6">
+            <p class="text-base sm:text-lg italic text-[#523825] leading-relaxed mb-4">
+                Với tất cả niềm vui và lòng biết ơn sâu sắc,<br>chúng tôi trân trọng kính mời
+            </p>
+            <div class="inline-block border-b border-[#3a2618] pb-1 px-8 my-2">
+                <span class="text-xl sm:text-2xl font-semibold text-[#3a2618] tracking-wide">Quý khách quý mến</span>
+            </div>
+            <p class="text-sm sm:text-base text-[#523825] mt-4 leading-relaxed">
+                Đến chung vui cùng gia đình chúng tôi trong lễ thành hôn.<br>Sự hiện diện của bạn chính là món quà ý nghĩa nhất.
+            </p>
+        </section>
+
+        <!-- Icon chia đoạn -->
+        <div class="my-6 text-[#7a2021]">
+            <i class="fa-solid fa-heart text-sm animate-pulse"></i>
+        </div>
+
+        <!-- Tên Chú Rể & Cô Dâu -->
+        <section class="mb-8">
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-4 my-2">
+                <h2 class="cursive-name text-5xl sm:text-6xl text-[#3a2618] font-bold">Khanh Huy</h2>
+                <span class="cursive-name text-3xl sm:text-4xl text-[#7a2021] my-1 sm:my-0">&</span>
+                <h2 class="cursive-name text-5xl sm:text-6xl text-[#7a2021] font-bold drop-shadow-sm">Cẩm Tiên</h2>
+            </div>
+
+            <!-- Thời gian & Địa điểm -->
+            <div class="space-y-3 mt-6 font-sans text-xs sm:text-sm text-[#4a3525]">
+                <div class="flex items-center justify-center gap-2">
+                    <i class="fa-regular fa-clock text-[#c5a059]"></i>
+                    <span class="font-medium">10:00 — Chủ Nhật, ngày 25 tháng 12 năm 2026</span>
+                </div>
+                <div class="flex items-center justify-center gap-2 px-4">
+                    <i class="fa-solid fa-location-dot text-[#c5a059]"></i>
+                    <span>Trung tâm Hội nghị & Tiệc cưới — TP. Hồ Chí Minh</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Đồng hồ đếm ngược -->
+        <section class="mb-10 bg-[#ede5d0]/60 p-4 rounded-xl border border-[#c5a059]/30 max-w-md mx-auto">
+            <p class="text-xs font-sans text-[#7a5833] uppercase tracking-wider mb-3">Cùng đếm ngược đến ngày vui</p>
+            <div class="grid grid-cols-4 gap-2 text-center">
+                <div class="bg-[#f7f3e8] p-2 sm:p-3 rounded-lg shadow-sm border border-[#c5a059]/20">
+                    <span id="days" class="block text-xl sm:text-2xl font-bold text-[#7a2021]">00</span>
+                    <span class="text-[10px] sm:text-xs font-sans uppercase tracking-wider text-[#684c31]">Ngày</span>
+                </div>
+                <div class="bg-[#f7f3e8] p-2 sm:p-3 rounded-lg shadow-sm border border-[#c5a059]/20">
+                    <span id="hours" class="block text-xl sm:text-2xl font-bold text-[#7a2021]">00</span>
+                    <span class="text-[10px] sm:text-xs font-sans uppercase tracking-wider text-[#684c31]">Giờ</span>
+                </div>
+                <div class="bg-[#f7f3e8] p-2 sm:p-3 rounded-lg shadow-sm border border-[#c5a059]/20">
+                    <span id="minutes" class="block text-xl sm:text-2xl font-bold text-[#7a2021]">00</span>
+                    <span class="text-[10px] sm:text-xs font-sans uppercase tracking-wider text-[#684c31]">Phút</span>
+                </div>
+                <div class="bg-[#f7f3e8] p-2 sm:p-3 rounded-lg shadow-sm border border-[#c5a059]/20">
+                    <span id="seconds" class="block text-xl sm:text-2xl font-bold text-[#7a2021]">00</span>
+                    <span class="text-[10px] sm:text-xs font-sans uppercase tracking-wider text-[#684c31]">Giây</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nút Xác Nhận RSVP -->
+        <section class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
+            <button onclick="openRsvpModal('attending')" class="w-full sm:w-auto bg-[#7a2021] hover:bg-[#601819] text-[#f7f3e8] font-sans font-semibold text-sm px-6 py-3.5 rounded-lg shadow-md transition-all uppercase tracking-wider">
+                <i class="fa-solid fa-check mr-2"></i> Xác Nhận Tham Dự
+            </button>
+            <button onclick="openRsvpModal('declining')" class="w-full sm:w-auto bg-transparent hover:bg-[#ede5d0] text-[#3a2618] border border-[#3a2618] font-sans font-semibold text-sm px-6 py-3.5 rounded-lg shadow-sm transition-all uppercase tracking-wider">
+                <i class="fa-solid fa-xmark mr-2"></i> Tiếc, Không Thể Đến
+            </button>
+        </section>
+
+        <!-- Chân thiệp -->
+        <footer class="pt-4 border-t border-[#c5a059]/30 text-center">
+            <span class="cursive-name text-2xl text-[#3a2618]">— Khanh Huy & Cẩm Tiên —</span>
+        </footer>
+    </main>
+
+    <!-- Modal Thông báo Xác Nhận Tham Dự -->
+    <div id="rsvp-modal" class="fixed inset-0 z-50 bg-black/70 flex items-center justify-center p-4 hidden">
+        <div class="bg-[#f7f3e8] rounded-xl max-w-sm w-full p-6 text-center border-2 border-[#c5a059] shadow-2xl relative">
+            <div id="modal-icon" class="text-4xl text-[#7a2021] mb-3">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h3 id="modal-title" class="text-2xl font-bold text-[#3a2618] mb-2 font-serif">Cảm ơn bạn!</h3>
+            <p id="modal-message" class="text-sm font-sans text-[#523825] mb-6">Phản hồi của bạn đã được ghi nhận thành công.</p>
+            <button onclick="closeRsvpModal()" class="bg-[#3a2618] text-[#f7f3e8] font-sans px-6 py-2.5 rounded-lg text-sm hover:bg-[#523825] transition-all">Đóng</button>
+        </div>
+    </div>
+
+    <!-- Script Xử Lý Logic -->
+    <script>
+        // 1. Tạo sao đêm lung linh
+        const starsContainer = document.getElementById('stars-container');
+        for (let i = 0; i < 35; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            const size = Math.random() * 3 + 1;
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            star.style.top = `${Math.random() * 100}%`;
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.animationDuration = `${Math.random() * 3 + 2}s`;
+            star.style.animationDelay = `${Math.random() * 2}s`;
+            starsContainer.appendChild(star);
+        }
+
+        // 2. Xử lý Bật/Tắt Nhạc Nền
+        let isPlaying = false;
+        const bgMusic = document.getElementById('bg-music');
+        const musicStatus = document.getElementById('music-status');
+        const discIcon = document.getElementById('disc-icon');
+
+        function toggleMusic() {
+            if (!isPlaying) {
+                bgMusic.play().then(() => {
+                    isPlaying = true;
+                    musicStatus.textContent = 'Tắt nhạc';
+                    discIcon.classList.add('animate-spin-slow');
+                }).catch(e => {
+                    console.log("Trình duyệt chặn Autoplay nhạc:", e);
+                });
+            } else {
+                bgMusic.pause();
+                isPlaying = false;
+                musicStatus.textContent = 'Bật nhạc';
+                discIcon.classList.remove('animate-spin-slow');
+            }
+        }
+
+        // 3. Đồng hồ đếm ngược thời gian thực (Cài đặt ngày cưới ở đây)
+        const targetDate = new Date('December 25, 2026 10:00:00').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) {
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // 4. Modal RSVP
+        const rsvpModal = document.getElementById('rsvp-modal');
+        function openRsvpModal(type) {
+            rsvpModal.classList.remove('hidden');
+            if (type === 'attending') {
+                document.getElementById('modal-title').textContent = 'Xác Nhận Tham Dự';
+                document.getElementById('modal-message').textContent = 'Cảm ơn bạn rất nhiều vì đã sắp xếp thời gian đến chung vui trong ngày cưới của Khanh Huy & Cẩm Tiên!';
+            } else {
+                document.getElementById('modal-title').textContent = 'Đã Ghi Nhận';
+                document.getElementById('modal-message').textContent = 'Khanh Huy & Cẩm Tiên rất tiếc vì bạn không thể tham dự, nhưng cảm ơn những lời chúc tốt đẹp nhất từ bạn!';
+            }
+        }
+        function closeRsvpModal() {
+            rsvpModal.classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
